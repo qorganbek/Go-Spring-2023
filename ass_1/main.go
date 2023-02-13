@@ -131,9 +131,12 @@ func main() {
 						fmt.Println("Wrong command!")
 
 					}
+				} else {
+					fmt.Println("Wrong command!")
 				}
 
 			} else if command == 2 {
+				fmt.Println("Enter your email/username and password")
 				var email, password string
 				fmt.Scan(&email, &password)
 				newUser := data.User{Email: email, Password: password}
@@ -146,6 +149,7 @@ func main() {
 					fmt.Println("New User authorization Success!")
 				}
 			} else if command == 3 {
+				fmt.Println("Enter your email/username and password")
 				var email, password string
 				fmt.Scan(&email, &password)
 				User := data.User{Email: email, Password: password}
@@ -167,6 +171,7 @@ func main() {
 			showLogInMenu()
 			fmt.Scan(&command)
 			if command == 1 {
+				fmt.Println("Thank u for using our system")
 				logIn = false
 			} else if command == 2 {
 				ProductMenu()
