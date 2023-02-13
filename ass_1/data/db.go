@@ -8,7 +8,7 @@ import (
 )
 
 var UserDb = map[string]AuthUser{}
-var ProductDb = map[int]Product{}
+var ProductDb = map[int]*Product{}
 
 func UserSerializer() {
 	byteValue, _ := json.Marshal(UserDb)

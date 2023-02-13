@@ -2,90 +2,165 @@ package main
 
 import (
 	"ass1/data"
-
 	"fmt"
 )
 
-func showMenu() {
-	fmt.Println("1. View users")
+func showMainMenu() {
+	fmt.Println("1. Admin Panel")
 	fmt.Println("2. Register user")
 	fmt.Println("3. Login User")
-	fmt.Println("4. Product List")
-	fmt.Println("5. Exit")
+	fmt.Println("4. Exit")
 }
 
-func _AdminPanel() {
+func showLogInMenu() {
+	fmt.Println("1. Log Out User")
+	fmt.Println("2. Product")
+	fmt.Println("3. Exit")
+}
+
+func ProductMenu2() {
+	fmt.Println("1. Product List")            // +
+	fmt.Println("2. Search Product by title") // +
+	fmt.Println("3. Filter Product")          // -
+	fmt.Println("4. Give rating a Product")   // -
+}
+
+func AdminPanel2() {
 	fmt.Println("1. User")
 	fmt.Println("2. Product")
 }
 
-func _AdminUser() {
+func AdminUser2() {
 	fmt.Println("1. Create User")
-	fmt.Println("2. Update User")
-	fmt.Println("3. Delete User")
-	fmt.Println("4. List User")
+	fmt.Println("2. Delete User")
+	fmt.Println("3. List User")
 }
 
-func _AdminProduct() {
+func AdminProduct2() {
 	fmt.Println("1. Create Product")
-	fmt.Println("2. Update Product")
-	fmt.Println("3. Delete Product")
-	fmt.Println("4. List Product")
+	fmt.Println("2. Delete Product")
+	fmt.Println("3. List Product")
 }
-
-//Main Menu
-//1. Admin Panel -> User, Product[Create, Delete, Update, List]
-//2. Register User
-//3. Log In User
-//4. Exit
-
-//After Registration
-//1.Product List
-//2.Log out
-//3.Exit
-
-//Product List
-//...
 
 func main() {
 	ok := true
-	var req int
+	logIn := false
+	var command int
 	for ok {
-		showMenu()
-		fmt.Scan(&req)
+		if !logIn {
+			showMainMenu()
+			fmt.Scan(&command)
+			if command == 1 {
+				AdminPanel2()
+				var adminCommand int
+				fmt.Scan(&adminCommand)
+				if adminCommand == 1 {
+					AdminUser2()
+					var adminUserCommand int
+					fmt.Scan(&adminUserCommand)
 
-		switch req {
-		case 1:
-			data.Service{}.ListUsers()
-		case 2:
-			var email, password string
-			fmt.Scan(&email, &password)
+					if adminUserCommand == 1 {
+						var email, password string
+						fmt.Scan(&email, &password)
+						u1 := data.User{Email: email, Password: password}
+						data.Service{}.CreateUser(u1)
+					} else if adminUserCommand == 2 {
+						var email, password string
+						fmt.Scan(&email, &password)
+						u1 := data.User{Email: email, Password: password}
+						data.Service{}.DeleteUser(u1)
+					} else if adminUserCommand == 3 {
+						data.Service{}.ListUsers()
+					} else {
+						fmt.Println("Wrong command!")
+					}
 
-			newUser := data.User{Email: email, Password: password}
+				} else if adminCommand == 2 {
+					AdminProduct2()
+					var adminProductCommand int
+					fmt.Scan(&adminProductCommand)
 
-			err := data.Service{}.CreateUser(newUser)
-			if err != nil {
-				fmt.Println("New User authorization Failed!")
+					if adminProductCommand == 1 {
+						var id, price int
+						var title string
+						fmt.Scan(&id, &title, &price)
+						p1 := data.Product{ID: id, Title: title, Price: price}
+						data.Service{}.CreateProduct(p1)
+
+					} else if adminProductCommand == 2 {
+						var id, price int
+						var title string
+						fmt.Scan(&id, &title, &price)
+						p1 := data.Product{ID: id, Title: title, Price: price}
+						data.Service{}.DeleteProduct(p1)
+
+					} else if adminProductCommand == 3 {
+						data.Service{}.ListProducts()
+					} else {
+						fmt.Println("Wrong command!")
+
+					}
+				}
+
+			} else if command == 2 {
+				var email, password string
+				fmt.Scan(&email, &password)
+				newUser := data.User{Email: email, Password: password}
+
+				err := data.Service{}.CreateUser(newUser)
+
+				if err != nil {
+					fmt.Println("New User authorization Failed!")
+				} else {
+					fmt.Println("New User authorization Success!")
+				}
+			} else if command == 3 {
+				var email, password string
+				fmt.Scan(&email, &password)
+				User := data.User{Email: email, Password: password}
+				found := data.Service{}.VerifyUser(User)
+				if found {
+					logIn = true
+					fmt.Println("User Log In Success!")
+				} else {
+					fmt.Println("User Log In Failed!")
+				}
+			} else if command == 4 {
+				ok = false
+				break
 			} else {
-				fmt.Println("New User authorization Success!")
+				fmt.Println("Wrong command!")
 			}
-		case 3:
-			var email, password string
-			fmt.Scan(&email, &password)
 
-			user := data.User{Email: email, Password: password}
-
-			found := data.Service{}.VerifyUser(user)
-			if found {
-				fmt.Println("User Log In Success!")
+		} else {
+			showLogInMenu()
+			fmt.Scan(&command)
+			if command == 1 {
+				logIn = false
+			} else if command == 2 {
+				ProductMenu2()
+				var productCommand int
+				fmt.Scan(&productCommand)
+				if productCommand == 1 {
+					data.Service{}.ListProducts()
+				} else if productCommand == 2 {
+					var title string
+					fmt.Scan(&title)
+					data.SearchProduct(title)
+				} else if productCommand == 4 {
+					var rate, id int
+					fmt.Scan(&id, &rate)
+					data.GiveRating(id, rate)
+				} else {
+					fmt.Println("Wrong command!")
+				}
+			} else if command == 3 {
+				ok = false
+				break
 			} else {
-				fmt.Println("User Log In Failed!")
+				fmt.Println("Wrong command!")
 			}
-		case 4:
-			ok = false
-			break
 		}
 	}
 
-	fmt.Println("End. Thanks for using our system!")
 }

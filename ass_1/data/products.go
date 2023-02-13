@@ -8,29 +8,31 @@ import (
 type Product struct {
 	ID        int
 	Title     string
-	IsActive  bool
 	Price     int
 	ArrRating []int
 }
 
-func (p Product) Rating() float64 {
+func (p Product) Rating() float32 {
+	if len(p.ArrRating) == 0 {
+		return 0.0
+	}
 	sum := 0
 	for i := range p.ArrRating {
-		sum += i
+		sum += p.ArrRating[i]
 	}
-	return float64(sum / len(p.ArrRating))
+	return float32(sum / len(p.ArrRating))
 }
 
 func SearchProduct(title string) {
 	ProductDeserializer()
 	for key, val := range ProductDb {
 		if val.Title == title {
-			fmt.Println(key, val.Price, val.Title)
+			fmt.Println(key, val.Price, val.Title, val.Rating())
 		}
 	}
 }
 
-func cxGiveRating(id int, rate int) error {
+func GiveRating(id int, rate int) error {
 	ProductDeserializer()
 
 	list, err := ProductDb[id]

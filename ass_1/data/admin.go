@@ -85,12 +85,11 @@ func (Service) CreateProduct(newProduct Product) error {
 	}
 
 	newAuthProduct := Product{
-		ID:       newProduct.ID,
-		Title:    newProduct.Title,
-		IsActive: newProduct.IsActive,
-		Price:    newProduct.Price,
+		ID:    newProduct.ID,
+		Title: newProduct.Title,
+		Price: newProduct.Price,
 	}
-	ProductDb[newProduct.ID] = newAuthProduct
+	ProductDb[newProduct.ID] = &newAuthProduct
 
 	ProductSerializer()
 
