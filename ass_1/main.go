@@ -43,7 +43,7 @@ func AdminProduct() {
 }
 
 func FilterMenu() {
-	fmt.Println("1. Filter by rating")
+	fmt.Println("1. Filter by Rating")
 	fmt.Println("2. Filter by Price")
 }
 
