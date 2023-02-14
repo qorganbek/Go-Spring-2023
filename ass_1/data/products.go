@@ -3,6 +3,7 @@ package data
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
 type Product struct {
@@ -26,7 +27,7 @@ func (p Product) Rating() float64 {
 func SearchProduct(title string) {
 	ProductDeserializer()
 	for key, val := range ProductDb {
-		if val.Title == title {
+		if strings.Contains(val.Title, title) {
 			fmt.Println(key, val.Price, val.Title, val.Rating())
 		}
 	}

@@ -84,9 +84,9 @@ func main() {
 						u1 := data.User{Email: email, Password: password}
 						err := data.Service{}.DeleteUser(u1)
 						if err != nil {
-							fmt.Println("User deletion failed!")
-						} else {
 							fmt.Println("User successfully deleted")
+						} else {
+							fmt.Println("User deletion failed!")
 						}
 					} else if adminUserCommand == 3 {
 						fmt.Println("List of users: ")
@@ -114,6 +114,7 @@ func main() {
 							fmt.Println("New Product successfully created!")
 						}
 					} else if adminProductCommand == 2 {
+						fmt.Println("If u want to delete product enter id, title price")
 						var idD, price int
 						var title string
 						fmt.Scan(&idD, &title, &price)
@@ -122,7 +123,7 @@ func main() {
 						if err != nil {
 							fmt.Println("Product deletion failed!")
 						} else {
-							fmt.Println("Delete product failed!")
+							fmt.Println("Product successfully deleted!")
 						}
 					} else if adminProductCommand == 3 {
 						fmt.Println("Product List: ")
