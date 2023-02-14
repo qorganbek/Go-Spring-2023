@@ -50,6 +50,7 @@ func FilterMenu() {
 func main() {
 	ok := true
 	id := 1
+	const ADMINPASSWORD int = 123
 	logIn := false
 	var command int
 	for ok {
@@ -57,6 +58,13 @@ func main() {
 			showMainMenu()
 			fmt.Scan(&command)
 			if command == 1 {
+				fmt.Println("Please enter admin pin code")
+				var pas int
+				fmt.Scan(&pas)
+				if ADMINPASSWORD != pas {
+					fmt.Println("Error 404 :)")
+					continue
+				}
 				AdminPanel()
 				var adminCommand int
 				fmt.Scan(&adminCommand)
@@ -101,7 +109,7 @@ func main() {
 					fmt.Scan(&adminProductCommand)
 
 					if adminProductCommand == 1 {
-						fmt.Println("If u want to create new product title, price")
+						fmt.Println("If u want to create new product enter title, price")
 						var price int
 						var title string
 						fmt.Scan(&title, &price)

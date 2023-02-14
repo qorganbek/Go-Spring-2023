@@ -69,7 +69,7 @@ func (Service) DeleteUser(currentUser User) error {
 
 func (Service) ListProducts() {
 
-	ProductSerializer()
+	ProductDeserializer()
 
 	for key, val := range ProductDb {
 		fmt.Println(key, val.Title, val.Rating())
