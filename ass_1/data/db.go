@@ -25,7 +25,7 @@ func UserDeserializer() {
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	json.Unmarshal([]byte(byteValue), UserDb)
+	json.Unmarshal([]byte(byteValue), &UserDb)
 }
 
 func ProductSerializer() {
@@ -43,5 +43,5 @@ func ProductDeserializer() {
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	json.Unmarshal([]byte(byteValue), ProductDb)
+	json.Unmarshal([]byte(byteValue), &ProductDb)
 }
