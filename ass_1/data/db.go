@@ -11,7 +11,7 @@ var UserDb = map[string]AuthUser{}
 var ProductDb = map[int]*Product{}
 
 func UserSerializer() {
-	byteValue, _ := json.Marshal(UserDb)
+	byteValue, _ := json.MarshalIndent(UserDb, "", "  ")
 	_ = ioutil.WriteFile("users.json", byteValue, 0644)
 }
 
@@ -29,7 +29,7 @@ func UserDeserializer() {
 }
 
 func ProductSerializer() {
-	byteValue, _ := json.Marshal(ProductDb)
+	byteValue, _ := json.MarshalIndent(ProductDb, "", "  ")
 	_ = ioutil.WriteFile("products.json", byteValue, 0644)
 }
 

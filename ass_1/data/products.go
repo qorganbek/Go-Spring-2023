@@ -67,5 +67,4 @@ func FilterByPrice(lowPrice int, highPrice int) {
 			fmt.Println(key, val.Title, val.Rating(), val.Price)
 		}
 	}
-
 }

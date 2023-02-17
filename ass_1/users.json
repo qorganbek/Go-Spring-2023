@@ -1,1 +1,6 @@
-{"aidos":{"Email":"aidos","PasswordHash":"$2a$10$CN11801dkHO3FNS5dGdOMeAxm5tDorWcHskPy4HunwwS1gAkOQWY6"},"asdas":{"Email":"asdas","PasswordHash":"$2a$10$1j21AFrerid5A8xsKJVYiOc/41nie.Xt/ue.ACHRouunM/ttbIu.K"},"dima":{"Email":"dima","PasswordHash":"$2a$10$CPZhTKQTAW9thepcvnSPWuc.20pHhgHIsZ39rDg8eMXK/EKLcDnVq"}}
+{
+  "dima": {
+    "Email": "dima",
+    "PasswordHash": "$2a$10$bvHBl9PmTPbjZZABvX2UuOPxQIq.Nslz1shAcrSr3NKLMF3531ULC"
+  }
+}

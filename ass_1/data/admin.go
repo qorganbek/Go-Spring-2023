@@ -110,3 +110,14 @@ func (Service) DeleteProduct(currentProduct Product) error {
 	ProductSerializer()
 	return nil
 }
+
+func (Service) GetLastIdProduct() int {
+	ProductDeserializer()
+	res := 1
+	for _, val := range ProductDb {
+		if val.ID > res {
+			res = val.ID
+		}
+	}
+	return res
+}
