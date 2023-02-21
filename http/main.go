@@ -19,6 +19,7 @@ func MainView(w http.ResponseWriter, r *http.Request) {
 // product
 
 func main() {
+	
 	fmt.Println("Server is listening on localhost:8080, open your browser on http://localhost:8080/")
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
