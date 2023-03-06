@@ -3,7 +3,9 @@
     "ID": 1,
     "Title": "Iphone 14",
     "Price": 800,
-    "ArrRating": null
+    "ArrRating": null,
+    "Description": "Iphone 14 good phone",
+    "ImgLink": "https://m.media-amazon.com/images/I/61i8Vjb17SL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
   },
   "2": {
     "ID": 2,
@@ -12,7 +14,9 @@
     "ArrRating": [
       8,
       7
-    ]
+    ],
+    "Description": "Macbook good laptop",
+    "ImgLink": "https://m.media-amazon.com/images/I/61L5QgPvgqL._AC_SX522_.jpg"
   },
   "3": {
     "ID": 3,
@@ -21,12 +25,16 @@
     "ArrRating": [
       10,
       7
-    ]
+    ],
+    "Description": "Good phone ",
+    "ImgLink": "https://images.satu.kz/186830044_w640_h640_smartfon-xiaomi-poco.jpg"
   },
   "4": {
     "ID": 4,
     "Title": "Watch SE",
     "Price": 400,
-    "ArrRating": null
+    "ArrRating": [10, 10],
+    "Description": "Good Watch",
+    "ImgLink": "https://www.technodom.kz/_next/image?url=https%3A%2F%2Fapi.technodom.kz%2Ff3%2Fapi%2Fv1%2Fimages%2F800%2F800%2F227258_1.jpg&w=1920&q=85"
   }
 }

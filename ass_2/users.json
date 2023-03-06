@@ -1,6 +1,34 @@
 {
+  "": {
+    "Email": "",
+    "PasswordHash": "$2a$10$poIjLhQ6isCSnUYvH/W28e0D3Ef7FgTZ/swPvQIXyZx6dDm9ktomu"
+  },
+  "alfarabi": {
+    "Email": "alfarabi",
+    "PasswordHash": "$2a$10$3FJp/A9q/9ozeM.2JWQWduonSmcbW9Q2EavRP2WS12AHohVU/BPRG"
+  },
   "dima": {
     "Email": "dima",
-    "PasswordHash": "$2a$10$bvHBl9PmTPbjZZABvX2UuOPxQIq.Nslz1shAcrSr3NKLMF3531ULC"
+    "PasswordHash": "$2a$10$84almL9eZhgD.ADFqfGZlucPJHgOgfhSGIi/T3/e86ddlb4k/IgU6"
+  },
+  "dima123": {
+    "Email": "dima123",
+    "PasswordHash": "$2a$10$P6497LYyQbwhnMmHG8818uzjDtSAhlgSXqC4Xf5NdbEsNii9Rs2gO"
+  },
+  "dima_k": {
+    "Email": "dima_k",
+    "PasswordHash": "$2a$10$wX3DWg4cDQMAJgVEUXQqxukexKWf7vT8Ywt1YfgCdqK93jEuQQAo2"
+  },
+  "ibadat": {
+    "Email": "ibadat",
+    "PasswordHash": "$2a$10$8Wt.9MlRNgOTrk7POHuaGu1NYwXb/MtXx2jYHJagEr1o7hPU23LaG"
+  },
+  "manapaly": {
+    "Email": "manapaly",
+    "PasswordHash": "$2a$10$nTMiBzjeReg2UqEa3dyRoO0AG4EHveaG7iSq.gop0MFIdaEQQ.67a"
+  },
+  "qorganbek_d": {
+    "Email": "qorganbek_d",
+    "PasswordHash": "$2a$10$NLZvouqNOOhs86ta/rO7LulcZ20bNhB.TRz8Y64PEmE1lKB3erWi6"
   }
 }

@@ -3,16 +3,20 @@ package pkg
 import (
 	"errors"
 	"fmt"
-	"strings"
+	"net/http"
 )
 
-func SearchProduct(title string) {
-	ProductDeserializer()
-	for key, val := range ProductDb {
-		if strings.Contains(val.Title, title) {
-			fmt.Println(key, val.Price, val.Title, val.Rating())
-		}
-	}
+func SearchProduct(r http.Request) {
+	title := r.FormValue("search")
+	fmt.Println(title)
+	//ProductDeserializer()
+	//var filteredProducts []Product
+	//for _, val := range ProductDb {
+	//	if strings.Contains(val.Title, title) {
+	//		filteredProducts = append(filteredProducts, *val)
+	//	}
+	//}
+	//return filteredProducts
 }
 
 func GiveRating(id int, rate float64) error {

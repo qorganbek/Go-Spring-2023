@@ -1,10 +1,12 @@
 package pkg
 
 type Product struct {
-	ID        int
-	Title     string
-	Price     int
-	ArrRating []float64
+	ID          int
+	Title       string
+	Price       int
+	Description string
+	ImgLink     string
+	ArrRating   []float64
 }
 
 func (p Product) Rating() float64 {

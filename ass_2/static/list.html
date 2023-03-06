@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/4a/Amazon_icon.svg">
+    <title>Product List</title>
+    <style>
+        body{
+            display: flex;
+        }
+        .search{
+            margin-top: 79px;
+            margin-left: 60px;
+        }
+
+        .search > input{
+            width: 120px;
+            height: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .product-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .product-list li {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            width: 600px;
+        }
+        .product-list img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+        .product-list h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .product-list p {
+            margin: 0;
+            font-size: 16px;
+        }
+        .product-list .price {
+            font-weight: bold;
+            color: green;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Product List</h1>
+
+        <ul class="product-list">
+            {{range $key, $val := .}}
+
+            <li>
+                <img src={{ $val.ImgLink }} alt="">
+                <div>
+                    <h2> {{ $val.Title }} </h2>
+                    <p>{{ $val.Description  }}</p>
+                    <p> Rating: {{ $val.Rating }}</p>
+                    <p class="price"> {{ $val.Price }}$</p>
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+
+<div class="search">
+    <p>Search by title: </p>
+    <input type="text" name="search" id="search" placeholder="type title">
+</div>
+
+
+
+
+</body>
+</html>
