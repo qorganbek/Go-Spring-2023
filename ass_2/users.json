@@ -30,5 +30,9 @@
   "qorganbek_d": {
     "Email": "qorganbek_d",
     "PasswordHash": "$2a$10$NLZvouqNOOhs86ta/rO7LulcZ20bNhB.TRz8Y64PEmE1lKB3erWi6"
+  },
+  "qwe": {
+    "Email": "qwe",
+    "PasswordHash": "$2a$10$efJXRgKBMZSWDiX69tMeBeJ67GyljHSmAqNQivgxkiwMgZPll2RLu"
   }
 }

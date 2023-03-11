@@ -23,6 +23,7 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 }
 
 func Authorization(w http.ResponseWriter, r *http.Request) {
+	ok := true
 	tmpl, _ := template.ParseFiles("static/sign_in.html")
 	tmpl.Execute(w, nil)
 	username := r.FormValue("name")
@@ -30,7 +31,7 @@ func Authorization(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(username, password)
 	u1 := pkg.User{Email: username, Password: password}
 
-	ok := pkg.Service{}.VerifyUser(u1)
+	ok = pkg.Service{}.VerifyUser(u1)
 
 	if ok {
 		fmt.Println("Success")
