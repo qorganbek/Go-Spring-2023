@@ -118,10 +118,36 @@ func updateBook(c *gin.Context) {
 
 }
 
+func desc(c *gin.Context) {
+	dsn := "host=localhost user=postgres password=Dimash2003 dbname=go_application1 port=5432"
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	} else {
+		var bks []pkg.Book
+		db.Order("ID desc").Find(&bks)
+		c.JSON(http.StatusOK, bks)
+	}
+}
+
+func asc(c *gin.Context) {
+	dsn := "host=localhost user=postgres password=Dimash2003 dbname=go_application1 port=5432"
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	} else {
+		var bks []pkg.Book
+		db.Order("ID asc").Find(&bks)
+		c.JSON(http.StatusOK, bks)
+	}
+}
+
 func main() {
 	fmt.Println("Server started at 0.0.0.0:8080")
 	r := gin.Default()
 	r.GET("/books", getBooks)
+	r.GET("/books/desc", desc)
+	r.GET("/books/asc", asc)
 	r.GET("/books/:id", getBook)
 	r.POST("/books", createBook)
 	r.DELETE("/books/:id", deleteBook)
@@ -133,7 +159,7 @@ func main() {
 	Get List of books, +
 	Upd title or description by ID,
 	Delete book by ID, +
-	Search by title,
+	Search by title, +
 	Add book, +
 	Sort by desc and asc,
 	Docker
