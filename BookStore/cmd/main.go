@@ -3,7 +3,6 @@ package main
 import (
 	"BookStore/pkg"
 	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -98,26 +97,6 @@ func deleteBook(c *gin.Context) {
 
 }
 
-func updateBook(c *gin.Context) {
-	dsn := "host=localhost user=postgres password=Dimash2003 dbname=go_application1 port=5432"
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		panic(err)
-	} else {
-		id := c.Param("id")
-		newId, _ := strconv.Atoi(id)
-		var bks []pkg.Book
-		db.Find(&bks)
-		b := make(map[string]string)
-		reqBody, _ := ioutil.ReadAll(c.Request.Body)
-		json.Unmarshal([]byte(reqBody), &b)
-		bks[newId-1].Title = b["Title"]
-		bks[newId-1].Description = b["Description"]
-		c.JSON(201, gin.H{"message": "updated"})
-	}
-
-}
-
 func desc(c *gin.Context) {
 	dsn := "host=localhost user=postgres password=Dimash2003 dbname=go_application1 port=5432"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
@@ -142,8 +121,25 @@ func asc(c *gin.Context) {
 	}
 }
 
+func updateBook(c *gin.Context) {
+	dsn := "host=localhost user=postgres password=Dimash2003 dbname=go_application1 port=5432"
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	} else {
+		id := c.Param("id")
+		reqBody, _ := ioutil.ReadAll(c.Request.Body)
+		b := make(map[string]string)
+		json.Unmarshal([]byte(reqBody), &b)
+		IdNew, _ := strconv.Atoi(id)
+		db.Model(&pkg.Book{}).Where("iD = ?", IdNew).Update("Title", b["Title"])
+		db.Model(&pkg.Book{}).Where("iD = ?", IdNew).Update("Description", b["Description"])
+		c.JSON(200, gin.H{"message": "updated"})
+	}
+
+}
+
 func main() {
-	fmt.Println("Server started at 0.0.0.0:8080")
 	r := gin.Default()
 	r.GET("/books", getBooks)
 	r.GET("/books/desc", desc)
@@ -157,10 +153,10 @@ func main() {
 
 /*
 	Get List of books, +
-	Upd title or description by ID,
+	Upd title or description by ID, +
 	Delete book by ID, +
 	Search by title, +
 	Add book, +
-	Sort by desc and asc,
+	Sort by desc and asc, +
 	Docker
 */
